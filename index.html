@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d1d66d8c06.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mali&display=swap');
+        html * {
+            background-color: #e0628c;
+            margin: 0;
+            padding: 0;
+            font-family: 'Mali';
+        }
+        .heading-container {
+            position: relative;
+            height: 50px;
+            background-color: #e43972;
+        }
+        .heading {
+            background-color: #e43972;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 45px;
+            transform: translateY(-50%);
+        }
+        .input-container {
+            position: relative;
+            top: 25px;
+            left: 25px; 
+            width: 27%;
+            height: 200px;
+        }
+        input {
+            background-color: white;
+            border: none;
+            padding: 5px 10px;
+            outline: none;
+            width: 165px;
+            border-radius: 3px;
+            height: 25px;
+            margin: 10px 0;
+        }
+        select {
+            font-weight: bold;
+            background-color: white;
+            border-radius: 3px;
+            outline: none;
+            padding: 0 10px;
+            height: 30px;
+            width: 90px;
+            border: none;
+        }
+        option {
+            background-color: white;
+        }
+        label {
+            color: white;
+            font-size: 17px;
+        }
+        .input-1, .input-2 {
+            margin-bottom: 30px;
+        }
+        button {
+            font-size: 17px;
+            color: #000;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            background-color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 18px #4d3641;
+        }
+        .container {
+            position: relative;
+        }
+        .meter {
+            position: absolute;
+            top: 500px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid white;
+            border-radius: 25px;
+            width: 90%;
+            height: 40px;
+        }
+        #meter-percent {
+            position: absolute;
+            color: white;
+            top: 425px;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+        #meter-fill {
+            border-radius: 20px;
+            position: relative;
+            bottom: 0.5 px;
+            height: 40px;
+            width: 0%;
+            background-color: #00ff00;
+        }
+        .symbols {
+            position: absolute;
+            top: 7px;
+            left: 0%;
+            transform: rotate(30deg) translateX(-40px);
+            color: #ff0055;
+            font-size: 80px;
+            background: transparent;
+        }
+        .desc-container {
+            position: absolute;
+            top: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65%;
+            height: 100px;
+            z-index: -1;
+        }
+        .desc, .people {
+            text-align: center;
+            color: white;
+        }
+        .people {
+            position: relative;
+            bottom: 20px;
+        }
+        .upper-love {
+            font-size: 60px;
+        }
+        .popup-container {
+            position: absolute;
+        }
+        .popup {
+            top: 75px;
+            left: 100px;
+            position: absolute;
+            background-color: white;
+            text-align: center;
+            border-radius: 3px;
+            width: 225px;
+            border: 2px solid red;
+            color: black;
+            padding: 10px 0;
+            z-index: 1;
+        }
+        .popup p {
+            background-color: white;
+        }
+        .popup-shadow {
+            top: 75px;
+            left: 100px;
+            position: absolute;
+            background-color: white;
+            text-align: center;
+            border-radius: 3px;
+            width: 225px;
+            color: black;
+            padding: 10px 0;
+            box-shadow: 0 0 18px 1px #4d3641;
+        }
+        .triangle {
+            top: 67px;
+            left: 120px;
+            position: absolute;
+            box-shadow: 0 0 10px 1px #4d3641;
+            background-color: red;
+            transform: rotate(45deg);
+            width: 15px;
+            height: 15px;
+        }
+        #popup-1-container, #popup-2-container {
+            display: none;
+        }
+        #popup-2-container {
+            width: 300px;
+            position: absolute;
+            top: 137px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading-container">
+            <h1 class="heading">Love Calculator</h1>
+        </div>
+        <div class="input-container">
+            <div class="popup-container">
+                <div id="popup-1-container">
+                    <div class="popup-shadow">
+                        <p>You must write something!</p>
+                    </div>
+                    <div class="popup">
+                        <p>You must write something!</p>
+                    </div>
+                    <div class="triangle"></div>
+                </div>
+                <div id="popup-2-container">
+                    <div class="popup-shadow">
+                        <p>You must write something!</p>
+                    </div>
+                    <div class="popup">
+                        <p>You must write something!</p>
+                    </div>
+                    <div class="triangle"></div>
+                </div>
+            </div>
+            <div class="input-1">
+                <label>Person 1</label><br>
+                <input type="text" id="name-1" placeholder="Name">
+                <br>
+                <select id="gender-1">
+                    <option value="male" selected disabled hidden>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="attack-helicopter">Attack Helicopter</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="input-2">
+                <label>Person 2</label><br>
+                <input type="text" id="name-2" placeholder="Name">
+                <br>
+                <select id="gender-2">
+                    <option value="male" selected disabled hidden>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="attack-helicopter">Attack Helicopter</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <button onclick="calculate()">Calculate Love</button>
+        </div>
+        <div class="desc-container">
+            <h1 class="people" id="people"></h1>
+            <h1 class="desc" id="desc"></h1>
+        </div>
+        <div class="meter-container">
+            <h1 id="meter-percent">0%</h1>
+            <div class="meter">
+                <div id="meter-fill"></div>
+                <i class="fas fa-heart symbols" id="love"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculate() {
+            var randomized = Math.floor(Math.random() * 101);
+            var randomWord = Math.floor(Math.random() * 2);
+
+            var red = [`Tombol surrend ada di pengaturan.`, `Sorry, w gapunya nomor telpon dukun`];
+            var orange = [`Bjir, ${randomized}% doang, kasian.`, `Cuma ${randomized}% doang sih, tapi boleh dicoba`];
+            var yellow = [`Tenang, masih kuning, peluang masih besar.`, `Lumayan dapet kuning ya kan.`];
+            var green = [`Gasken lah, warna ijo nih, peluang besar.`, `Tinggal nunggu waktu nih, maju terus pantang mundur.`];
+            var absoluteGreen = [`Wah, life mod apk nih, downloadnya di HappyMod fix.`, `Pake guna-guna fix, ga salah lagi`];
+            var name1 = document.getElementById('name-1').value;
+            var name2 = document.getElementById('name-2').value;
+
+            if ((name1 == '' || name1 == undefined) && (name2 == '' || name2 == undefined)) {
+                $('#popup-1-container').css('display', 'block');
+                $('#popup-2-container').css('display', 'block');
+                return true;
+            } else if (name1 == '' || name1 == undefined) {
+                $('#popup-1-container').css('display', 'block');
+                return true;
+            } else if (name2 == '' || name2 == undefined) {
+                $('#popup-2-container').css('display', 'block');
+                return true;
+            }
+
+            $('.input-container').hide();
+            $('#meter-fill').width(randomized + '%');
+            $('#meter-percent').html(randomized + '%');
+            document.getElementById('love').style.left = randomized + '%';
+
+            if (randomized < 5) {
+                $('#meter-fill').width('5%');
+                $('#meter-percent').html('5%');
+            }
+
+            if (randomized < 23) {
+                document.getElementById('meter-fill').style.backgroundColor = 'red';
+                document.getElementById('desc').innerHTML = red[randomWord];
+                $('#people').append(`${name1} <i class="fas fa-heart-broken upper-love"></i> ${name2}`);
+            } else if (randomized < 45) {
+                document.getElementById('meter-fill').style.backgroundColor = 'orange';
+                document.getElementById('desc').innerHTML = orange[randomWord];
+                $('#people').append(`${name1} <i class="fas fa-heart upper-love"></i> ${name2}`);
+            } else if (randomized < 67) {
+                document.getElementById('meter-fill').style.backgroundColor = 'yellow';
+                document.getElementById('desc').innerHTML = yellow[randomWord];
+                $('#people').append(`${name1} <i class="fas fa-heart upper-love"></i> ${name2}`);
+            } else if (randomized < 90) {
+                document.getElementById('meter-fill').style.backgroundColor = '#00ff00';
+                document.getElementById('desc').innerHTML = green[randomWord];
+                $('#people').append(`${name1} <i class="fas fa-heart upper-love"></i> ${name2}`);
+            } else {
+                document.getElementById('meter-fill').style.backgroundColor = '#00ff00';
+                document.getElementById('desc').innerHTML = absoluteGreen[randomWord];
+                $('#people').append(`${name1} <i class="fas fa-heart upper-love"></i> ${name2}`);
+            }
+        }
+
+        $('#name-1').keyup(function() {
+            $('#popup-1-container').css('display', 'none');
+        });
+
+        $('#name-2').keyup(function() {
+            $('#popup-2-container').css('display', 'none');
+        });
+    </script>
+</body>
+</html>
