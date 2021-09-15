@@ -44,6 +44,7 @@ select {
     height: 30px;
     width: 90px;
     border: none;
+    cursor: pointer;
 }
 option {
     background-color: white;
