@@ -187,9 +187,60 @@
             position: absolute;
             top: 137px;
         }
+        #overlay-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        #overlay {
+            padding: 30px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-color: #e0628c;
+            border-radius: 30px;
+            transform: translate(-50%, -50%);
+            height: 85%;
+            width: 92%;
+        }
+        #overlay h1 {
+            color: white;
+        }
+        #continue {
+            border-radius: 25px;
+            margin-top: 140px;
+            padding: 15px;
+            font-size: 30px;
+            transition: 0.3s;
+        }
+        #continue:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #4d3641;
+        }
+        #calculate {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+    <div id="overlay-container">
+        <div id="overlay">
+            <h1>Perhatian!</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1>Permainan ini hanyalah fiktif belaka dan jangan dianggap sebagai kebenaran. Permainan ini dibuat untuk bersenang-senang, bukan untuk meramal, kalo mo ngeramal konsultasi ke dukun setempat.</h1>
+            <button id="continue">Lanjut Ke Permainan</button>
+        </div>
+    </div>
     <div class="container">
         <div class="heading-container">
             <h1 class="heading">Love Calculator</h1>
@@ -198,19 +249,19 @@
             <div class="popup-container">
                 <div id="popup-1-container">
                     <div class="popup-shadow">
-                        <p>You must write something!</p>
+                        <p>Tulis satu huruf aja gapapa dah, asal ada isinya</p>
                     </div>
                     <div class="popup">
-                        <p>You must write something!</p>
+                        <p>Tulis satu huruf aja gapapa dah, asal ada isinya</p>
                     </div>
                     <div class="triangle"></div>
                 </div>
                 <div id="popup-2-container">
                     <div class="popup-shadow">
-                        <p>You must write something!</p>
+                        <p>Tulis satu huruf aja gapapa dah, asal ada isinya</p>
                     </div>
                     <div class="popup">
-                        <p>You must write something!</p>
+                        <p>Tulis satu huruf aja gapapa dah, asal ada isinya</p>
                     </div>
                     <div class="triangle"></div>
                 </div>
@@ -220,8 +271,7 @@
                 <input type="text" id="name-1" placeholder="Name">
                 <br>
                 <select id="gender-1">
-                    <option value="male" selected disabled hidden>Gender</option>
-                    <option value="male">Male</option>
+                    <option value="male" selected>Male</option>
                     <option value="female">Female</option>
                     <option value="attack-helicopter">Attack Helicopter</option>
                     <option value="other">Other</option>
@@ -232,14 +282,13 @@
                 <input type="text" id="name-2" placeholder="Name">
                 <br>
                 <select id="gender-2">
-                    <option value="male" selected disabled hidden>Gender</option>
                     <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="female" selected>Female</option>
                     <option value="attack-helicopter">Attack Helicopter</option>
                     <option value="other">Other</option>
                 </select>
             </div>
-            <button onclick="calculate()">Calculate Love</button>
+            <button id="calculate" onclick="calculate()">Calculate Love</button>
         </div>
         <div class="desc-container">
             <h1 class="people" id="people"></h1>
@@ -317,6 +366,10 @@
 
         $('#name-2').keyup(function() {
             $('#popup-2-container').css('display', 'none');
+        });
+
+        $('#continue').click(function() {
+            $('#overlay-container').css('display', 'none');
         });
     </script>
 </body>
