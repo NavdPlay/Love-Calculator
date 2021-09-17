@@ -63,6 +63,6 @@ $('#name-2').keyup(function () {
     $('#popup-2-container').css('display', 'none');
 });
 
-$('#continue').click(function () {
-    $('#overlay-container').css('display', 'none');
-});
+function off() {
+    document.getElementById('overlay-container').style.display = 'none';
+}
